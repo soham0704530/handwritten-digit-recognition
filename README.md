@@ -36,7 +36,7 @@ Users can upload an image of a handwritten digit, and the model predicts the dig
 ---
 
 ## 📈 Results
-- MNIST Accuracy: ~98%
+- MNIST Accuracy: ~99.12
 - Non-MNIST Accuracy: Lower (expected due to domain shift)
 
 ---
