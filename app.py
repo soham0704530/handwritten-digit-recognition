@@ -1,8 +1,8 @@
+from PIL import Image
+import numpy as np
 import streamlit as st
 import torch
-import cv2
-import numpy as np
-from model import DigitCNN  # your model class
+from model import DigitCNN
 
 st.title("✍️ Handwritten Digit Recognition")
 
@@ -13,10 +13,10 @@ model.eval()
 uploaded_file = st.file_uploader("Upload a handwritten digit image", type=["png", "jpg", "jpeg"])
 
 if uploaded_file is not None:
-    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    image = cv2.imdecode(file_bytes, cv2.IMREAD_GRAYSCALE)
+    image = Image.open(uploaded_file).convert("L")
+    image = image.resize((28, 28))
+    image = np.array(image)
 
-    image = cv2.resize(image, (28, 28))
     image = 255 - image
     image = image / 255.0
 
